@@ -15,4 +15,5 @@ mongoose.connect(process.env.DATABASE_URL)
 .then(()=>console.log("DB Connected"))
 .catch((err)=>console.log(err));
 
+app.use("/posts", require("./routes/posts"));
 app.listen(process.env.PORT,()=>console.log("Server is running"))
