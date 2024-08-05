@@ -27,7 +27,13 @@ router.get("/getPostsById/:postid", async (req, res) => {
 router.patch("/editDescp/:postid",async (req, res) => {
     const _id = req.params.postid;
     await Post.findByIdAndUpdate(_id,{$set:{description: req.body.description}});
-    res.json({"Status": "Updated"});
+    res.json({"Status": "Description Updated"});
+})
+
+router.put("/edit/:postid",async (req, res) => {
+    const _id = req.params.postid;
+    await Post.findByIdAndUpdate(_id,{$set:{title: req.body.title ,description: req.body.description}});
+    res.json({"Status": "Post Updated"});
 })
 
 module.exports = router;
