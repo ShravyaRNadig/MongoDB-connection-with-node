@@ -18,6 +18,12 @@ router.get("/getPosts", async (req, res) => {
     res.json(posts);
 });
 
+router.get("/getPostsById/:postid", async (req, res) => {
+    const _id = req.params.postid;
+    const post = await Post.findById(_id);
+    res.json(post);
+});
+
 router.patch("/editDescp/:postid",async (req, res) => {
     const _id = req.params.postid;
     await Post.findByIdAndUpdate(_id,{$set:{description: req.body.description}});
